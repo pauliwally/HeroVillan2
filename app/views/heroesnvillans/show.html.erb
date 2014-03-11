@@ -1,0 +1,57 @@
+<div class="page-header">
+  <%#= link_to "Edit", "/brands/#{@brand.id}/edit", :class => "btn btn-md btn-success pull-right" %>
+  <h1>Brand Details</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <img class="col-md-12" src="<%#= @brand.image_url %>">
+  </div>
+  <div class="col-md-8">
+    <h3><%= @brand.brand_name %></h3>
+    <p><strong>Hero Votes: <%= @reviews.sum(:hero_vote) %></strong></p>
+    <p><strong>Villan Votes: <%= @reviews.sum(:villan_vote) %></strong></p>
+    <!-- <p><%#= @brand.description %></p> -->
+  </div>
+</div>
+
+
+<p><strong>Hero or Villan?  Vote.  Voice.  </strong></p>
+
+<!-- <form action="/reviews/create">
+  <div class="form-group">
+    <input type="hidden" name="item_id" value=<%= @brand.id %>>
+  </div>
+  <div class="form-group">
+    <input name="title" type="text" class="form-control input-md" placeholder="Title">
+  </div>
+  <div class="form-group">
+    <select name="rating">
+      <option value="1">1 Star</option>
+      <option value="2">2 Stars</option>
+      <option value="3">3 Stars</option>
+      <option value="4">4 Stars</option>
+      <option value="5">5 Stars</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <textarea name="body" class="form-control input-md" rows="5" placeholder="Your review goes here. Keep it brief." ></textarea>
+  </div>
+  <input type="submit" class="btn btn-lg btn-success" value="Submit My Review">
+</form>
+
+<%# if @reviews.count > 0 %>
+
+  <h2>What Other People Said:</h2>
+
+  <%# @reviews.each do |review| %>
+    <div class="row">
+      <div class="col-md-12">
+      <p class="lead">Jeff says...</p>
+        <h3><%#= review.rating %> stars: <%#= review.title %></h3>
+        <p><%#= review.body %></p>
+      </div>
+    </div>
+  <%# end %>
+
+<%# end %> -->

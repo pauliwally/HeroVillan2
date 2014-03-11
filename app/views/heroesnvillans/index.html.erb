@@ -1,0 +1,22 @@
+<div class = "page-header">
+  <h1>Brands</h1>
+</div>
+
+<p>index list of brands here ...</p>
+
+<% @brands_list.each do |brand| %>
+  <div class="row">
+    <div class="col-md-6">
+    <!-- THIS CODE SAYS: WHEN YOU CLICK ON THE COMPANY NAME, WHAT HAPPENS? -->
+      <h3><a href="/brands/<%= brand.id %>/show"><%= brand.brand_name %></a></h3>
+    </div>
+  </div>
+<% end %>
+
+<!-- <% @companies_list.each do |company| %> -->
+  <!-- <div class="row">
+    <div class="col-md-6">
+      <h3><a href="/brands/show"><%= company.company_name %></a></h3>
+    </div>
+  </div> -->
+<!-- <% end %> -->
