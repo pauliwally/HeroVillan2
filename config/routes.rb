@@ -27,6 +27,9 @@ HeroesVillans::Application.routes.draw do
     get "/login" => 'sessions#new'
     get "/authenticate" => 'sessions#create'
 
+#USER PROFILE
+    get "/profile" => 'users#show'
+
 
 # SEARCH
   # get "/search" => "heroesnvillans#search"

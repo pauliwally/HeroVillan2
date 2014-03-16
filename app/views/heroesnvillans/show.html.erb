@@ -43,20 +43,24 @@
 <!-- OTHERS REVIEWS -->
 <% if @reviews.count > 0 %>
 <h2>What Other People Said:</h2>
-
+  <div class ="col-md-5 herobox">
     <p><strong>Hero Votes:</strong> <%= @reviews.sum(:hero_vote) %></p>
-    <p><strong>Villan Votes:</strong> <%= @reviews.sum(:villan_vote) %></p>
-
     <p><strong><%= @brand.brand_name %> is a Hero because...</strong></p>
       <% @reviews_hero.each do |review_hero| %>
+      <!-- <p><%#= User.find_by(:user_id => review.user_id) %><#% if u.present %> says:</p> -->
       <p><%= review_hero.comment %></p>
     <% end %>
+  </div>
 
+  <div class ="col-md-5 villanbox">
+    <p><strong>Villan Votes:</strong> <%= @reviews.sum(:villan_vote) %></p>
     <p><strong><%= @brand.brand_name %> is a Villan because...</strong></p>
       <% @reviews_villan.each do |review_villan| %>
       <p><%= review_villan.comment %></p>
     <% end %>
+
   </div>
+
 
 <!-- NEWS ON BRANDS FROM REDDIT -->
 <!-- <div>
@@ -64,5 +68,9 @@
 
 <p>It is <%#= @data["main"]["temp"] %> degrees outside.</p>
 </div> -->
+<script>
+
+#
+</script>
 
 <% end %>

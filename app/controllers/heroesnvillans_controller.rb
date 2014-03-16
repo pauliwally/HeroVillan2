@@ -20,14 +20,14 @@ end
     @reviews_villan = Review.where(:brand_id => params[:brand_id]).where(:villan_vote => 1)
     @brand_news = params[:brand_name]
 
-    # GET WIKIPEDIA DESCRIPTION ONTO SHOW PAGE
+  # GET WIKIPEDIA DESCRIPTION ONTO SHOW PAGE
     # url = URI.escape("https://en.wikipedia.org/wiki/{brand_name}")
     # @json_data = open(url).read
     # @data = JSON.parse(@json_data)
     # puts data.class
     # puts data.inspect
 
-# TRYING TO GET NEWS FROM REDDIT TO SHOW UP WITH BRANDS.  SEE VIEW SHOW.
+  # TRYING TO GET NEWS FROM REDDIT TO SHOW UP WITH BRANDS.  SEE VIEW SHOW.
     # url = URI.escape("http://www.reddit.com/search?q={brand_name}")
     # @json_data = open(url).read
     # @data = JSON.parse(@json_data)

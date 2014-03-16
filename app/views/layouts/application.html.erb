@@ -10,8 +10,20 @@
   <style>
     /* Only necessary if you are using navbar-fixed-top */
     body {
-      padding-top: 50px;
+      padding-top: 100px;
     }
+
+    .herobox {border: solid 5.0px green;
+              background-color:;
+              }
+    .villanbox {border: solid 5.0px red;
+              background-color:;
+              }
+    .logofont {font-size: 20;
+                font-color: white;
+                test-align: center;
+                font-weight: bold;
+              }
   </style>
 
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -21,6 +33,14 @@
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- /*<style>
+  /*.navbar-nav {background-color: red !important;*/
+        }
+
+</style>*/ -->
+
+
 </head>
 <body>
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -36,6 +56,7 @@
 
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+        <h1><strong>Heroes N Villans</strong></h1>
         <li><a href="/"><strong>All Brands</strong></a></li>
         <% Category.all.order("category_name").each do |category| %>
          <li>
@@ -46,18 +67,17 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li class="navbar-text"><%= session[:user_first] %></li>
-        <% user = User.find_by(:id => session[:user_id]) %>
-
+        <!-- <li class="navbar-text"><%#= session[:user_first] %></li> -->
+        <% user = User.find_by(:user_first => session[:user_first]) %>
         <% if user.present? %>
-          <li class="navbar-text">Hi, <%= user.user_first %>!</li>
-          <li><a href="/users/<%= user.id %>/show">My Profile</a></li>
-          <li><a href="/logout">Sign Out</a></li>
+          <p class="navbar-text">Hi, <%= session[:user_first] %>!</p>
+        <% end %>
+          <% if user.present? %>
+            <li><a href="/users/<%= user.id %>/show">My Profile</a></li>
+            <li><a href="/logout">Log Out</a></li>
         <% else %>
-
-        <li><a href="/users/new">Sign Up</a></li>
-        <li><a href="/login">Sign in</a></li>
-
+          <li><a href="/users/new">Sign Up</a></li>
+          <li><a href="/login">Login</a></li>
         <% end %>
 
       </ul>
