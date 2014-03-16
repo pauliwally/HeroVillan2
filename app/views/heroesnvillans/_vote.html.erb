@@ -1,0 +1,16 @@
+<div class ="col-md-4 votebox">
+<h3>Hero or Villan?  Vote your voice.</h3>
+<form action="/reviews/create">
+  <input name="brand_id" value=<%= @brand.id %> type="hidden">
+  <div class="form-group">
+    <select name="vote">
+      <option value="1">Hero</option>
+      <option value="-1">Villan</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <textarea name="comment" class="form-control input-md" rows="5" placeholder="In your own words, why is <%= @brand.brand_name %> a Hero or a Villan?" ></textarea>
+  </div>
+  <input type="submit" class="btn btn-md btn-success" value="Submit My Vote">
+</form>
+</div>

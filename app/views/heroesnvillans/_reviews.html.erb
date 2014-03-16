@@ -1,0 +1,20 @@
+<% if @reviews.count > 0 %>
+
+  <div class ="col-md-4 herobox">
+  <h3>Total Hero Votes: <%= @reviews.sum(:hero_vote) %></h3>
+    <p><strong><%= @brand.brand_name %> is a Hero because...</strong></p>
+      <% @reviews_hero.each do |review_hero| %>
+      <!-- <p><%#= User.find_by(:user_id => review.user_id) %><#% if u.present %> says:</p> -->
+      <p><%= review_hero.comment %></p>
+    <% end %>
+  </div>
+
+  <div class ="col-md-4 villanbox">
+    <h3>Total Villan Votes: <%= @reviews.sum(:villan_vote) %></h3>
+    <p><strong><%= @brand.brand_name %> is a Villan because...</strong></p>
+      <% @reviews_villan.each do |review_villan| %>
+      <p><%= review_villan.comment %></p>
+    <% end %>
+
+  </div>
+<% end %>

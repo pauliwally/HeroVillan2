@@ -3,63 +3,13 @@
   <h1>Brand Details</h1>
 </div>
 
-<div class="row">
-  <div class="col-md-4">
-    <img class="col-md-12" src="<%#= @brand.image_url %>">
-  </div>
-  <div class="col-md-8">
-    <h2><%= @brand.brand_name %></h2>
-    <p><strong>Parent Company:</strong> <%= @brand.company.company_name %></p>
-    <p><strong>The gist on the <%= @brand.brand_name %> brand:</strong> <%= @brand.description %></p>
-    <!-- GET DESCRIPTION FROM WIKIPEDIA -->
-    <!-- <p><strong>Brand Description: </strong><%#= @description["main"] %></p> -->
+<%= render 'details' %>
 
-
-</div>
-
-<div>
-<br>
-</div>
-
-<!-- WOULD BE COOL TO HAVE "YOUR VOTE" AND "OTHER VOTES" AS COLUMNS NEXT TO EACHOTHER -->
-<!-- YOUR VOTE -->
-<h2>Hero or Villan?  Vote your voice.</h2>
-
-<form action="/reviews/create">
-  <input name="brand_id" value=<%= @brand.id %> type="hidden">
-  <div class="form-group">
-    <select name="vote">
-      <option value="1">Hero</option>
-      <option value="-1">Villan</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <textarea name="comment" class="form-control input-md" rows="5" placeholder="In your own words, why is <%= @brand.brand_name %> a Hero or a Villan?" ></textarea>
-  </div>
-  <input type="submit" class="btn btn-md btn-success" value="Submit My Vote">
-</form>
+<%= render 'vote' %>
 
 
 <!-- OTHERS REVIEWS -->
-<% if @reviews.count > 0 %>
-<h2>What Other People Said:</h2>
-  <div class ="col-md-5 herobox">
-    <p><strong>Hero Votes:</strong> <%= @reviews.sum(:hero_vote) %></p>
-    <p><strong><%= @brand.brand_name %> is a Hero because...</strong></p>
-      <% @reviews_hero.each do |review_hero| %>
-      <!-- <p><%#= User.find_by(:user_id => review.user_id) %><#% if u.present %> says:</p> -->
-      <p><%= review_hero.comment %></p>
-    <% end %>
-  </div>
-
-  <div class ="col-md-5 villanbox">
-    <p><strong>Villan Votes:</strong> <%= @reviews.sum(:villan_vote) %></p>
-    <p><strong><%= @brand.brand_name %> is a Villan because...</strong></p>
-      <% @reviews_villan.each do |review_villan| %>
-      <p><%= review_villan.comment %></p>
-    <% end %>
-
-  </div>
+<%= render 'reviews' %>
 
 
 <!-- NEWS ON BRANDS FROM REDDIT -->
@@ -73,4 +23,4 @@
 #
 </script>
 
-<% end %>
+

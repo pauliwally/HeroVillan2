@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-4">
+    <img class="col-md-12" src="<%#= @brand.image_url %>">
+  </div>
+  <div class="col-md-8">
+    <h2><%= @brand.brand_name %></h2>
+    <p><strong>Parent Company:</strong> <%= @brand.company.company_name %></p>
+    <p><strong>The gist on the <%= @brand.brand_name %> brand:</strong> <%= @brand.description %></p>
+    <!-- GET DESCRIPTION FROM WIKIPEDIA -->
+    <!-- <p><strong>Brand Description: </strong><%#= @description["main"] %></p> -->
+
+
+</div>
+
+<div>
+<br>
+</div>
