@@ -9,6 +9,25 @@ HeroesVillans::Application.routes.draw do
   # THIS IS HOW WEEK 7 GETS TO PRODUCT PAGE (I GOT "NO ROUTES MATCHES" ERROR MESSAGE):
   get "/brands/:brand_id/show" => "heroesnvillans#show"
 
+# CREATE
+  get "/reviews/create" => "heroesnvillans#create"
+
+# USER LOGIN/LOGOFF
+    get "/login" => "sessions#new"
+    get "/authenticate" => "sessions#create"
+    get "/logout" => "sessions#destroy"
+
+    root 'brands#index'
+
+    get "/users/new" => 'users#new'
+    get "/users/create" => 'users#create'
+    get "/users/:user_id/show" => 'users#show'
+
+
+    get "/login" => 'sessions#new'
+    get "/authenticate" => 'sessions#create'
+
+
 # SEARCH
   # get "/search" => "heroesnvillans#search"
   # get "/heroesnvillans/searchresults" => "heroesnvillans#searchresults"
@@ -17,23 +36,8 @@ end
 
 # STUFF TO DO:
 
-    # USER LOGIN/LOGOFF
-    # get "/login" => "sessions#new"
-    # get "/authenticate" => "sessions#create"
-    # get "/logout" => "sessions#destroy"
-
-    # root 'products#index'
-
-    # get "/users/new" => 'users#new'
-    # get "/users/create" => 'users#create'
-    # get "/users/:user_id/show" => 'users#show'
 
     # Product-related URLs
-
-    # # CREATE
-    # get "/products/new" => "products#new"
-    # get "/products/create" => "products#create"
-
 
 
     # # UPDATE

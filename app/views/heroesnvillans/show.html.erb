@@ -8,50 +8,61 @@
     <img class="col-md-12" src="<%#= @brand.image_url %>">
   </div>
   <div class="col-md-8">
-    <h3><%= @brand.brand_name %></h3>
-    <p><strong>Hero Votes: <%= @reviews.sum(:hero_vote) %></strong></p>
-    <p><strong>Villan Votes: <%= @reviews.sum(:villan_vote) %></strong></p>
-    <!-- <p><%#= @brand.description %></p> -->
-  </div>
+    <h2><%= @brand.brand_name %></h2>
+    <p><strong>Parent Company:</strong> <%= @brand.company.company_name %></p>
+    <p><strong>The gist on the <%= @brand.brand_name %> brand:</strong> <%= @brand.description %></p>
+    <!-- GET DESCRIPTION FROM WIKIPEDIA -->
+    <!-- <p><strong>Brand Description: </strong><%#= @description["main"] %></p> -->
+
+
 </div>
 
+<div>
+<br>
+</div>
 
-<p><strong>Hero or Villan?  Vote.  Voice.  </strong></p>
+<!-- WOULD BE COOL TO HAVE "YOUR VOTE" AND "OTHER VOTES" AS COLUMNS NEXT TO EACHOTHER -->
+<!-- YOUR VOTE -->
+<h2>Hero or Villan?  Vote your voice.</h2>
 
-<!-- <form action="/reviews/create">
+<form action="/reviews/create">
+  <input name="brand_id" value=<%= @brand.id %> type="hidden">
   <div class="form-group">
-    <input type="hidden" name="item_id" value=<%= @brand.id %>>
-  </div>
-  <div class="form-group">
-    <input name="title" type="text" class="form-control input-md" placeholder="Title">
-  </div>
-  <div class="form-group">
-    <select name="rating">
-      <option value="1">1 Star</option>
-      <option value="2">2 Stars</option>
-      <option value="3">3 Stars</option>
-      <option value="4">4 Stars</option>
-      <option value="5">5 Stars</option>
+    <select name="vote">
+      <option value="1">Hero</option>
+      <option value="-1">Villan</option>
     </select>
   </div>
   <div class="form-group">
-    <textarea name="body" class="form-control input-md" rows="5" placeholder="Your review goes here. Keep it brief." ></textarea>
+    <textarea name="comment" class="form-control input-md" rows="5" placeholder="In your own words, why is <%= @brand.brand_name %> a Hero or a Villan?" ></textarea>
   </div>
-  <input type="submit" class="btn btn-lg btn-success" value="Submit My Review">
+  <input type="submit" class="btn btn-md btn-success" value="Submit My Vote">
 </form>
 
-<%# if @reviews.count > 0 %>
 
-  <h2>What Other People Said:</h2>
+<!-- OTHERS REVIEWS -->
+<% if @reviews.count > 0 %>
+<h2>What Other People Said:</h2>
 
-  <%# @reviews.each do |review| %>
-    <div class="row">
-      <div class="col-md-12">
-      <p class="lead">Jeff says...</p>
-        <h3><%#= review.rating %> stars: <%#= review.title %></h3>
-        <p><%#= review.body %></p>
-      </div>
-    </div>
-  <%# end %>
+    <p><strong>Hero Votes:</strong> <%= @reviews.sum(:hero_vote) %></p>
+    <p><strong>Villan Votes:</strong> <%= @reviews.sum(:villan_vote) %></p>
 
-<%# end %> -->
+    <p><strong><%= @brand.brand_name %> is a Hero because...</strong></p>
+      <% @reviews_hero.each do |review_hero| %>
+      <p><%= review_hero.comment %></p>
+    <% end %>
+
+    <p><strong><%= @brand.brand_name %> is a Villan because...</strong></p>
+      <% @reviews_villan.each do |review_villan| %>
+      <p><%= review_villan.comment %></p>
+    <% end %>
+  </div>
+
+<!-- NEWS ON BRANDS FROM REDDIT -->
+<!-- <div>
+<h2>Recent News for <%#= @brand.brand_name %></h1>
+
+<p>It is <%#= @data["main"]["temp"] %> degrees outside.</p>
+</div> -->
+
+<% end %>
